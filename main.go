@@ -1,20 +1,13 @@
 package main
 
-// import (
-// 	"fmt"
-// 	"regexp"
-// )
+import "github.com/gin-gonic/gin"
 
-// func main() {
-// 	var email string
-// 	fmt.Print("input email:")
-// 	fmt.Scan(&email)
-// 	fmt.Println("Email:", email)
-// 	fmt.Println("Is valid email:", checkValidEmail(email))
-// }
-
-// func checkValidEmail(email string) bool {
-// 	pattern := `^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`
-// 	matched, _ := regexp.MatchString(pattern, email)
-// 	return matched
-// }
+func main() {
+	r := gin.Default()
+	r.GET("/ping", func(ctx *gin.Context) {
+		ctx.JSON(200, gin.H{
+			"message": "pong",
+		})
+	})
+	r.Run()
+}
